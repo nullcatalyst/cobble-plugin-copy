@@ -1,0 +1,35 @@
+{
+    "name": "cobble-plugin-copy",
+    "version": "0.1.0",
+    "description": "",
+    "main": "lib/index.js",
+    "scripts": {
+        "build": "tsc",
+        "test": "mocha --require ts-node/register --extensions ts 'src/tests/**/*.ts'"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nullcatalyst/cobble-plugin-copy.git"
+    },
+    "author": {
+        "name": "Scott Bennett",
+        "email": "scottbennett912@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/nullcatalyst/cobble-plugin-copy/issues"
+    },
+    "homepage": "https://github.com/nullcatalyst/cobble-plugin-copy#readme",
+    "peerDependencies": {
+        "cobble": "github:nullcatalyst/cobble"
+    },
+    "devDependencies": {
+        "@types/mocha": "^9.0.0",
+        "@types/node": "^16.11.10",
+        "cobble": "github:nullcatalyst/cobble",
+        "mocha": "^9.1.3",
+        "nyc": "^15.1.0",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.2"
+    }
+}
