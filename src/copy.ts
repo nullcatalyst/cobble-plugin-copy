@@ -10,9 +10,12 @@ export class CopyPlugin extends cobble.BasePlugin {
         watcher: cobble.BaseWatcher,
         settings: cobble.BuildSettings,
     ): Promise<cobble.ResetPluginWatchedFilesFn> {
-        const srcs = settings.srcs.filter(src => src.protocol == this.name());
-        const outputDir = settings.outDir;
+        const srcs = this.filterSrcs(settings);
+        if (srcs.length == 0) {
+            return () => {};
+        }
 
+        const outputDir = settings.outDir;
         const cleanupFns = srcs.map(src => {
             const rel = settings.basePath.relative(src.path);
             const dst = outputDir.join(rel);
