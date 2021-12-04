@@ -1,8 +1,5 @@
-import { BuildSettings } from 'cobble/lib/composer/settings';
-import { BasePlugin, ResetPluginWatchedFilesFn } from 'cobble/lib/plugins/base';
-import { BaseWatcher } from 'cobble/lib/watcher/base';
-export declare class CopyPlugin extends BasePlugin {
-    constructor(opts?: any);
+import * as cobble from 'cobble';
+export declare class CopyPlugin extends cobble.BasePlugin {
     name(): string;
-    process(watcher: BaseWatcher, settings: BuildSettings): Promise<ResetPluginWatchedFilesFn>;
+    process(watcher: cobble.BaseWatcher, settings: cobble.BuildSettings): Promise<cobble.ResetPluginWatchedFilesFn>;
 }
