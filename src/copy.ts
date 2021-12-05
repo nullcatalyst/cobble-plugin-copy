@@ -17,8 +17,15 @@ export class CopyPlugin extends cobble.BasePlugin {
 
         const outputDir = settings.outDir;
         const cleanupFns = srcs.map(src => {
-            const rel = settings.basePath.relative(src.path);
-            const dst = outputDir.join(rel);
+            let dst: cobble.ResolvedPath;
+            if (src.path.toString().startsWith(settings.basePath.toString())) {
+                // The src exists under the base path, copy the file along with its relative path
+                const rel = settings.basePath.relative(src.path);
+                dst = outputDir.join(rel);
+            } else {
+                // The src is outside the base path, copy only the file to the output directory
+                dst = outputDir.join(src.path.basename);
+            }
 
             return watcher.add(src.path, async event => {
                 await cobble.mkdir(dst.dirname());
